@@ -14,8 +14,9 @@ Il progetto è stato sviluppato nel mio tempo libero, ed è gratuito e senza sco
 #### Passaggio 1: [Installa lo script](https://openuserjs.org/install/Robotex/FADIVVVV_-_vvvvid.it_Anti_Flash.min.user.js)
 #### Passaggio 2 (Opzionale): [Offrimi una Red Bull!](https://github.com/Robotex/FADIVVVV/blob/master/README.md#donazioni)
 
-## Domande e dubbi
-* [Per problemi tecnici andate qui](https://github.com/Robotex/FADIVVVV/issues)
+## Domande e problemi noti
+* Alcuni spettacoli è possibile che non vengano caricati. Questo è dovuto a una malconfigurazione della loro piattaforma di streaming, ho già in mente una possibile soluzione ma se non c'è richiesta lascerei le cose così come sono.
+* [Per altri problemi tecnici andate qui](https://github.com/Robotex/FADIVVVV/issues)
 
 ## Curiosità tecniche
 Lo script abilita la riproduzione dei video estendendo il supporto ai flussi HLS anche a browser che non sono compatibili con HLS nativamente. Questo avviene aggiungendo un modulo scritto da me al player projekktor utilizzato dal sito e correggendo quindi il controllo che ne indica la compatibilità.
