@@ -110,6 +110,8 @@ $p.newModel({
   
 });
     
-window.vvvvid.browserDetect.supportHLS = function () {
+vvvvid.browserDetect.supportHLS = function () {
   return Hls.isSupported();
 };
+vvvvid.models.User.prototype.defaults.hls = vvvvid.browserDetect.supportHLS();
+vvvvid.models.login.prototype.defaults.hls = vvvvid.browserDetect.supportHLS();
