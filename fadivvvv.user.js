@@ -3,14 +3,14 @@
 // @namespace   https://github.com/Robotex/
 // @description Guardati i tuoi anime preferiti senza avere Adobe Flash Player!
 // @author      Robotex
-// @version     1.0.0
+// @version     1.0.1
 // @license     GPL version 3; http://www.gnu.org/copyleft/gpl.html
 // @copyright   2016+, Robotex (https://github.com/Robotex/)
 // @homepage    https://github.com/Robotex/FADIVVVV/
 // @supportURL  https://github.com/Robotex/FADIVVVV/issues
 // @match       http://www.vvvvid.it/*
 // @grant       none
-// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.7/hls.min.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.10/hls.min.js
 // ==/UserScript==
 
 jQuery(function($) {
@@ -110,6 +110,8 @@ $p.newModel({
   
 });
     
-window.vvvvid.browserDetect.supportHLS = function () {
+vvvvid.browserDetect.supportHLS = function () {
   return Hls.isSupported();
 };
+vvvvid.models.User.prototype.defaults.hls = vvvvid.browserDetect.supportHLS();
+vvvvid.models.login.prototype.defaults.hls = vvvvid.browserDetect.supportHLS();
