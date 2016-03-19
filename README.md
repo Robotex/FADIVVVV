@@ -16,9 +16,20 @@ Il progetto è stato sviluppato nel mio tempo libero, ed è gratuito e senza sco
 
 ## Domande e problemi noti
 * Alcuni spettacoli è possibile che non vengano caricati. Questo è dovuto a una malconfigurazione della loro piattaforma di streaming, ho già in mente una possibile soluzione ma se non c'è richiesta lascerei le cose così come sono.
+* Dopo l'aggiornamento alla versione 1.0.1, è consigliato eseguire il logout e riloggarsi nuovamente per poter vedere correttamente i video
 * [Per altri problemi tecnici andate qui](https://github.com/Robotex/FADIVVVV/issues)
 
 ## Curiosità tecniche
 Lo script abilita la riproduzione dei video estendendo il supporto ai flussi HLS anche a browser che non sono compatibili con HLS nativamente. Questo avviene aggiungendo un modulo scritto da me al player projekktor utilizzato dal sito e correggendo quindi il controllo che ne indica la compatibilità.
 
 La gestione del flusso HLS è implementata dalla libreria [hls.js](https://github.com/dailymotion/hls.js/)
+
+## Changelog
+##### 1.0.1 (March 19, 2016)
+> 
+* Update hls.js library to 0.5.10
+* Video format determination
+
+##### 1.0.0 (February 27, 2016)
+>
+* Initial release
