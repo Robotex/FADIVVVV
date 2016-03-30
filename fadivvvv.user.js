@@ -14,32 +14,6 @@
 // @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.17/hls.min.js
 // ==/UserScript==
 
-var fadivvvvHlsConfig = Hls.DefaultConfig;
-fadivvvvHlsConfig.loader.loadInternal = function () {
-  var headers = {};
-  if (this.byteRange) {
-    headers['Range'] = 'bytes=' + this.byteRange;
-  }
-  
-  var xhrDetails = {
-    method: 'GET',
-    url: this.url,
-    headers: headers,
-    onloadend: this.loadend.bind(this),
-    onprogress: this.loadprogress.bind(this),
-    responseType: this.responseType
-  };
-
-  this.stats.tfirst = null;
-  this.stats.loaded = 0;
-  if (this.xhrSetup) {
-    this.xhrSetup(xhrDetails, this.url);
-  }
-  this.timeoutHandle = window.setTimeout(this.loadtimeout.bind(this), this.timeout);
-  
-  GM_xmlhttpRequest(xhrDetails);
-};
-
 jQuery(function($) {
 
 $p.newModel({
@@ -120,6 +94,32 @@ $p.newModel({
             }
         };
         if(Hls.isSupported()) {
+            var fadivvvvHlsConfig = Hls.DefaultConfig;
+            fadivvvvHlsConfig.loader.loadInternal = function () {
+              var headers = {};
+              if (this.byteRange) {
+                headers['Range'] = 'bytes=' + this.byteRange;
+              }
+              
+              var that = this;
+              var xhrDetails = {
+                method: 'GET',
+                url: that.url,
+                headers: headers,
+                onloadend: that.loadend.bind(that),
+                onprogress: that.loadprogress.bind(that),
+                responseType: that.responseType
+              };
+            
+              this.stats.tfirst = null;
+              this.stats.loaded = 0;
+              if (this.xhrSetup) {
+                this.xhrSetup(xhrDetails, this.url);
+              }
+              this.timeoutHandle = window.setTimeout(this.loadtimeout.bind(this), this.timeout);
+              
+              GM_xmlhttpRequest(xhrDetails);
+            };
             var hls = new Hls(fadivvvvHlsConfig);
             var urlSrc = document.createElement('a');
             urlSrc.href = this.mediaElement[0].src;
