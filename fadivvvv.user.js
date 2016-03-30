@@ -16,9 +16,7 @@
 
 var fadivvvvHlsConfig = Hls.DefaultConfig;
 fadivvvvHlsConfig.loader.loadInternal = function () {
-  var xhr;
-  
-  var headers = {}
+  var headers = {};
   if (this.byteRange) {
     headers['Range'] = 'bytes=' + this.byteRange;
   }
