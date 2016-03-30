@@ -10,9 +10,37 @@
 // @supportURL  https://github.com/Robotex/FADIVVVV/issues
 // @match       http://www.vvvvid.it/*
 // @match       https://www.vvvvid.it/*
-// @grant       none
+// @grant       GM_xmlhttpRequest
 // @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.17/hls.min.js
 // ==/UserScript==
+
+var fadivvvvHlsConfig = Hls.DefaultConfig;
+fadivvvvHlsConfig.loader.loadInternal = function () {
+  var xhr;
+  
+  var headers = {}
+  if (this.byteRange) {
+    headers['Range'] = 'bytes=' + this.byteRange;
+  }
+  
+  var xhrDetails = {
+    method: 'GET',
+    url: this.url,
+    headers: headers,
+    onloadend: this.loadend.bind(this),
+    onprogress: this.loadprogress.bind(this)
+    responseType: this.responseType;
+  };
+
+  this.stats.tfirst = null;
+  this.stats.loaded = 0;
+  if (this.xhrSetup) {
+    this.xhrSetup(xhrDetails, this.url);
+  }
+  this.timeoutHandle = window.setTimeout(this.loadtimeout.bind(this), this.timeout);
+  
+  GM_xmlhttpRequest(xhrDetails);
+};
 
 jQuery(function($) {
 
@@ -94,7 +122,7 @@ $p.newModel({
             }
         };
         if(Hls.isSupported()) {
-            var hls = new Hls();
+            var hls = new Hls(fadivvvvHlsConfig);
             var urlSrc = document.createElement('a');
             urlSrc.href = this.mediaElement[0].src;
             urlSrc.protocol = window.location.protocol;
