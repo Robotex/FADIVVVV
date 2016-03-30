@@ -3,12 +3,13 @@
 // @namespace   https://github.com/Robotex/
 // @description Guardati i tuoi anime preferiti senza avere Adobe Flash Player!
 // @author      Robotex
-// @version     1.0.1
+// @version     1.0.2
 // @license     GPL version 3; http://www.gnu.org/copyleft/gpl.html
 // @copyright   2016+, Robotex (https://github.com/Robotex/)
 // @homepage    https://github.com/Robotex/FADIVVVV/
 // @supportURL  https://github.com/Robotex/FADIVVVV/issues
 // @match       http://www.vvvvid.it/*
+// @match       https://www.vvvvid.it/*
 // @grant       none
 // @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.10/hls.min.js
 // ==/UserScript==
