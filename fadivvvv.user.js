@@ -11,7 +11,7 @@
 // @match       http://www.vvvvid.it/*
 // @match       https://www.vvvvid.it/*
 // @grant       none
-// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.10/hls.min.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.17/hls.min.js
 // ==/UserScript==
 
 jQuery(function($) {
