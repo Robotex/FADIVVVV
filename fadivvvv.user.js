@@ -28,8 +28,8 @@ fadivvvvHlsConfig.loader.loadInternal = function () {
     url: this.url,
     headers: headers,
     onloadend: this.loadend.bind(this),
-    onprogress: this.loadprogress.bind(this)
-    responseType: this.responseType;
+    onprogress: this.loadprogress.bind(this),
+    responseType: this.responseType
   };
 
   this.stats.tfirst = null;
