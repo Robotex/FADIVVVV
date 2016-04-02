@@ -14,6 +14,13 @@
 // @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.17/hls.min.js
 // ==/UserScript==
 
+function getFixedUrl(url, protocol) {
+    var aElement = document.createElement('a');
+    aElement.href = url;
+    aElement.protocol = protocol;
+    return aElement.href;
+}
+
 jQuery(function($) {
 
 $p.newModel({
@@ -120,11 +127,14 @@ $p.newModel({
               
               GM_xmlhttpRequest(xhrDetails);
             };
+            var fadivvvvHlsConfig = Hls.DefaultConfig;
+            var loadHook = fadivvvvHlsConfig.loader.load;
+            fadivvvvHlsConfig.loader.load = function () {
+              arguments[0] = getFixedUrl(arguments[0]); // url
+              return loadHook.apply(this, arguments);
+            }
             var hls = new Hls(fadivvvvHlsConfig);
-            var urlSrc = document.createElement('a');
-            urlSrc.href = this.mediaElement[0].src;
-            urlSrc.protocol = window.location.protocol;
-            hls.loadSource(urlSrc.href);
+            hls.loadSource(getFixedUrl(this.mediaElement[0].src, window.location.protocol));
             hls.attachMedia(this.mediaElement[0]);            
         }
         this.mediaElement.bind('loadstart.projekktorqs' + this.pp.getId(), c);
