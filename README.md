@@ -29,6 +29,7 @@ La gestione del flusso HLS è implementata dalla libreria [hls.js](https://githu
 >
 * Add HTTPS support
 * Fix urls protocol for same-origin-policy causing videos to not load
+* Update hls.js library to 0.5.17
 
 ##### 1.0.1 (March 19, 2016)
 > 
