@@ -3,14 +3,14 @@
 // @namespace   https://github.com/Robotex/
 // @description Guardati i tuoi anime preferiti senza avere Adobe Flash Player!
 // @author      Robotex
-// @version     1.0.2b
+// @version     1.0.2
 // @license     GPL version 3; http://www.gnu.org/copyleft/gpl.html
 // @copyright   2016+, Robotex (https://github.com/Robotex/)
 // @homepage    https://github.com/Robotex/FADIVVVV/
 // @supportURL  https://github.com/Robotex/FADIVVVV/issues
 // @match       http://www.vvvvid.it/*
 // @match       https://www.vvvvid.it/*
-// @grant       GM_xmlhttpRequest
+// @grant       none
 // @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.17/hls.min.js
 // ==/UserScript==
 
@@ -102,35 +102,9 @@ $p.newModel({
         };
         if(Hls.isSupported()) {
             var fadivvvvHlsConfig = Hls.DefaultConfig;
-            fadivvvvHlsConfig.loader.loadInternal = function () {
-              var headers = {};
-              if (this.byteRange) {
-                headers['Range'] = 'bytes=' + this.byteRange;
-              }
-              
-              var that = this;
-              var xhrDetails = {
-                method: 'GET',
-                url: that.url,
-                headers: headers,
-                onloadend: that.loadend.bind(that),
-                onprogress: that.loadprogress.bind(that),
-                responseType: that.responseType
-              };
-            
-              this.stats.tfirst = null;
-              this.stats.loaded = 0;
-              if (this.xhrSetup) {
-                this.xhrSetup(xhrDetails, this.url);
-              }
-              this.timeoutHandle = window.setTimeout(this.loadtimeout.bind(this), this.timeout);
-              
-              GM_xmlhttpRequest(xhrDetails);
-            };
-            var fadivvvvHlsConfig = Hls.DefaultConfig;
-            var loadHook = fadivvvvHlsConfig.loader.load;
-            fadivvvvHlsConfig.loader.load = function () {
-              arguments[0] = getFixedUrl(arguments[0]); // url
+            var loadHook = fadivvvvHlsConfig.loader.prototype.load;
+            fadivvvvHlsConfig.loader.prototype.load = function () {
+              arguments[0] = getFixedUrl(arguments[0], window.location.protocol); // url
               return loadHook.apply(this, arguments);
             }
             var hls = new Hls(fadivvvvHlsConfig);
