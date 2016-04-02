@@ -3,15 +3,23 @@
 // @namespace   https://github.com/Robotex/
 // @description Guardati i tuoi anime preferiti senza avere Adobe Flash Player!
 // @author      Robotex
-// @version     1.0.1
+// @version     1.0.2
 // @license     GPL version 3; http://www.gnu.org/copyleft/gpl.html
 // @copyright   2016+, Robotex (https://github.com/Robotex/)
 // @homepage    https://github.com/Robotex/FADIVVVV/
 // @supportURL  https://github.com/Robotex/FADIVVVV/issues
 // @match       http://www.vvvvid.it/*
+// @match       https://www.vvvvid.it/*
 // @grant       none
-// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.10/hls.min.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.17/hls.min.js
 // ==/UserScript==
+
+function getFixedUrl(url, protocol) {
+    var aElement = document.createElement('a');
+    aElement.href = url;
+    aElement.protocol = protocol;
+    return aElement.href;
+}
 
 jQuery(function($) {
 
@@ -93,8 +101,14 @@ $p.newModel({
             }
         };
         if(Hls.isSupported()) {
-            var hls = new Hls();
-            hls.loadSource(this.mediaElement[0].src);
+            var fadivvvvHlsConfig = Hls.DefaultConfig;
+            var loadHook = fadivvvvHlsConfig.loader.prototype.load;
+            fadivvvvHlsConfig.loader.prototype.load = function () {
+              arguments[0] = getFixedUrl(arguments[0], window.location.protocol); // url
+              return loadHook.apply(this, arguments);
+            }
+            var hls = new Hls(fadivvvvHlsConfig);
+            hls.loadSource(getFixedUrl(this.mediaElement[0].src, window.location.protocol));
             hls.attachMedia(this.mediaElement[0]);            
         }
         this.mediaElement.bind('loadstart.projekktorqs' + this.pp.getId(), c);
