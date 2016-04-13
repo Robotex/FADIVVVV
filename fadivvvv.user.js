@@ -12,7 +12,7 @@
 // @match       https://www.vvvvid.it/*
 // @grant       GM_xmlhttpRequest
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js
-// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.17/hls.min.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.20/hls.min.js
 // ==/UserScript==
 
 window.addEventListener ("message", function (event) {
