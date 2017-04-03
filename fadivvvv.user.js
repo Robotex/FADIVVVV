@@ -3,7 +3,7 @@
 // @namespace   https://github.com/Robotex/
 // @description Guardati i tuoi anime preferiti senza avere Adobe Flash Player!
 // @author      Robotex
-// @version     1.0.5
+// @version     1.0.6
 // @license     GPL version 3; http://www.gnu.org/copyleft/gpl.html
 // @copyright   2016+, Robotex (https://github.com/Robotex/)
 // @homepage    https://github.com/Robotex/FADIVVVV/
@@ -12,7 +12,7 @@
 // @match       https://www.vvvvid.it/*
 // @grant       GM_xmlhttpRequest
 // @require     https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js
-// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.52/hls.min.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.20/hls.min.js
 // ==/UserScript==
 
 window.addEventListener ("message", function (event) {
