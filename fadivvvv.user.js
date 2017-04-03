@@ -11,8 +11,8 @@
 // @match       http://www.vvvvid.it/*
 // @match       https://www.vvvvid.it/*
 // @grant       GM_xmlhttpRequest
-// @require     https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js
-// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.20/hls.min.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.7.4/hls.light.min.js
 // ==/UserScript==
 
 window.addEventListener ("message", function (event) {
@@ -34,13 +34,13 @@ function main () {
                 {ext:'m3u8', type:'application/x-mpegURL', platform: 'browser', streamType: ['http','httpVideo'], fixed: true}
             ],
             
-            _applySrcHook : $p.models['VIDEO'].prototype._applySrc,
+            _applySrcHook : $p.models['VVVVID_HTML5'].prototype._applySrc,
             _applySrc : function() {
                 this._applySrcHook.apply(this, arguments);
                 window.postMessage ("_applySrcEvent", "*");
             }
 
-        }, 'VIDEO');
+        }, 'VVVVID_HTML5');
 
     });
     
