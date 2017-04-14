@@ -25,6 +25,10 @@ Lo script abilita la riproduzione dei video estendendo il supporto ai flussi HLS
 La gestione del flusso HLS è implementata dalla libreria [hls.js](https://github.com/dailymotion/hls.js/)
 
 ## Changelog
+##### 1.0.6 (April 3, 2016)
+>
+* Updated tags
+
 ##### 1.0.3 (April 13, 2016)
 >
 * Restructured code to bypass missing CORS error, now most videos should play fine
