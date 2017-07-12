@@ -1,3 +1,5 @@
+# Aggiornamento 12 luglio 2017: questo script non è più necessario, hanno finalmente aggiunto il supporto nativo a Firefox implementando la mia idea di integrare hls.js direttamente nel loro player. Grazie vvvvid.it !
+
 # FADIVVVV
 Questo UserScript ti permette di vedere gli anime su vvvvid.it senza costringerti ad avere Adobe Flash Player installato, in particolare su Mozilla Firefox.
 
